@@ -16,7 +16,6 @@ class No:
 class LinkedList(estrutura_elementar):
     def __init__(self):
         self.inicio = None
-
     def inserir_inicio(self, valor):
         if self.inicio is None:
             self.inicio = No(valor)
@@ -36,30 +35,39 @@ class LinkedList(estrutura_elementar):
             aux.set_proximo(novoNo)
 
     def esta_vazio(self) -> bool:
-        if self.inicio is None:
-            return True
-        else:
+        if self.inicio is not None:
             return False
-     
-    def remove(self, item):
-        
-        pass
+        else:
+            return True
 
+    def remove(self, item):
+        if self.inicio == None:
+            return None
+        
+        elif self.inicio.valor == item:
+            self.inicio = self.inicio.get_proximo()
+         else:
+            aux = self.inicio
+            
+            while aux.get_proximo() is not None:
+                if aux.get_proximo().valor == item:
+                    aux.set_proximo(aux.get_proximo().get_proximo())
+                
+                else:    
+                    aux = aux.get_proximo()
     def tamanho(self) -> int:
         if self.inicio is None:
             return 0
-        else:
-            contador = 1
+        else: 
+            cont=1
             aux = self.inicio
             while aux.get_proximo() is not None:
                 aux = aux.get_proximo()
-                contador += 1
-            return contador       
+                cont+=1
+            return cont
 
     def limpa(self):
         self.inicio = None
-        pass
-       
     def procura(self, item) -> bool:
     
             
@@ -68,11 +76,10 @@ class LinkedList(estrutura_elementar):
     def indice_de(self, item): 
         if self.inicio is None:
             return-1
-        
 
+       
+     
+    
+   
             
-    pass
-
-                
-    def recupera_indice(self, index):
-        return 1
+  
